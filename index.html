@@ -535,6 +535,131 @@ a.lnk:hover{ background:rgba(211,250,74,.13); transform:translateX(3px) }
 }
 .lnk.is-soon{ opacity:.82 }
 
+
+/* ---------- payment schedule overlay ---------- */
+.linkbtn{
+  background:none; border:0; padding:0; cursor:pointer; font:inherit;
+  font-weight:800; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--forest-deep); text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:2px;
+  display:inline-flex; align-items:center; gap:.45em;
+}
+.linkbtn:hover{ color:var(--red) }
+.linkbtn svg{ width:1.2em; height:1.2em }
+.tcard .fee-actions{ display:flex; flex-wrap:wrap; align-items:center; gap:14px 20px; margin-top:4px }
+.btn-sm{ font-size:.86rem; padding:.95em 1.5em }
+.fees-note .btn-lime{ margin-top:.4em; font-size:.86rem; padding:.95em 1.5em }
+
+dialog.sched{
+  width:min(560px, calc(100vw - 32px)); max-height:calc(100vh - 32px); overflow:auto;
+  padding:0; border:2px solid var(--ink); border-radius:var(--r-lg);
+  background:var(--paper); color:var(--ink); box-shadow:0 40px 80px -30px rgba(0,0,0,.8);
+}
+dialog.sched::backdrop{ background:rgba(10,10,10,.72); backdrop-filter:blur(3px) }
+dialog.sched[open]{ animation:sched-in .22s cubic-bezier(.2,.7,.2,1) both }
+@keyframes sched-in{ from{ opacity:0; transform:translateY(10px) scale(.98) } to{ opacity:1; transform:none } }
+.sched-head{
+  background:var(--panel); color:#fff; padding:24px clamp(20px,3vw,30px) 20px; position:relative;
+}
+.sched-head .eyebrow{ color:var(--lime); margin-bottom:8px }
+.sched-head h2{ margin:0; font-family:var(--display); font-weight:400; text-transform:uppercase; font-size:clamp(1.7rem,4vw,2.3rem); line-height:.95 }
+.sched-close{
+  position:absolute; top:14px; right:14px; width:40px; height:40px; border-radius:50%;
+  border:0; background:var(--lime); color:var(--ink); cursor:pointer; display:grid; place-items:center;
+}
+.sched-close svg{ width:18px; height:18px }
+.sched-body{ padding:clamp(20px,3vw,30px) }
+.sched-group+.sched-group{ margin-top:22px; padding-top:20px; border-top:1px solid var(--rule) }
+.sched-group h3{
+  margin:0 0 12px; display:inline-block; background:var(--lime); color:var(--ink);
+  font-family:var(--display); font-weight:400; font-size:1.15rem; letter-spacing:.04em; text-transform:uppercase;
+  padding:.3em .85em .26em; clip-path:var(--stub); transform:rotate(-1deg);
+}
+.sched-list{ list-style:none; margin:0; padding:0; display:grid; gap:10px }
+.sched-list li{
+  display:grid; grid-template-columns:1fr auto; gap:6px 16px; align-items:baseline;
+  border:1.5px solid var(--ink); border-radius:var(--r-md); padding:14px 16px;
+}
+.sched-list .what{ font-weight:700 }
+.sched-list .what a{ color:var(--red); text-underline-offset:3px; text-decoration-thickness:2px }
+.sched-list .what a:hover{ color:var(--forest-deep) }
+.sched-list .when{ font-family:var(--display); font-size:1.3rem; line-height:1; color:var(--forest); text-align:right }
+.sched-foot{ display:flex; flex-wrap:wrap; align-items:center; gap:14px 20px; margin-top:24px }
+.sched-foot p{ margin:0; font-size:.86rem; color:#4A504A; flex:1 1 200px }
+@media (max-width:480px){
+  .sched-list li{ grid-template-columns:1fr } .sched-list .when{ text-align:left }
+}
+
+/* ---------- contact form ---------- */
+.form-grid{ display:grid; grid-template-columns:.8fr 1fr; gap:clamp(28px,4vw,64px); align-items:start }
+.cform{ background:#FFF; border:1.5px solid var(--ink); border-radius:var(--r-lg); padding:clamp(22px,3vw,36px) }
+.cform .row{ display:grid; grid-template-columns:1fr 1fr; gap:16px }
+.field{ margin:0 0 18px }
+.field label{ display:block; font-weight:800; font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:7px }
+.field label small{ font-weight:600; letter-spacing:.06em; text-transform:none; color:#6A7069; font-size:.82rem }
+.field input,.field select,.field textarea{
+  width:100%; font:inherit; font-size:1rem; color:var(--ink); background:var(--paper);
+  border:1.5px solid var(--ink); border-radius:12px; padding:13px 14px;
+  transition:box-shadow .15s ease;
+}
+.field textarea{ min-height:150px; resize:vertical }
+.field input:focus,.field select:focus,.field textarea:focus{ outline:none; box-shadow:0 0 0 4px var(--lime) }
+.hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden }
+.form-status{ margin:16px 0 0; font-weight:700; font-size:.95rem }
+.form-status.ok{ color:var(--forest-deep) }
+.form-status.err{ color:var(--red) }
+.form-aside .people{ margin-top:22px }
+.form-aside .person{ background:#FFF; border:1.5px solid var(--ink) }
+.form-aside .person span{ color:#4A504A }
+@media (max-width:980px){ .form-grid{ grid-template-columns:1fr } }
+@media (max-width:560px){ .cform .row{ grid-template-columns:1fr; gap:0 } }
+
+
+.tcard p.book-warn{ margin:0 0 16px; color:var(--red); font-weight:800; font-size:.92rem; line-height:1.4; letter-spacing:.03em }
+/* ---------- itinerary extras ---------- */
+.slot-body strong .opt-tag{
+  display:inline-block; vertical-align:.12em; margin-right:.5em; background:var(--orange); color:var(--ink);
+  font-weight:800; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; padding:5px 10px 4px;
+  clip-path:var(--stub);
+}
+.slot-link{
+  background:none; border:0; padding:0; font:inherit; cursor:pointer; display:inline;
+  color:var(--lime); font-weight:700; text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:2px;
+}
+.slot-link:hover{ color:#fff }
+
+/* ---------- reservation info ---------- */
+.rform .row{ display:grid; grid-template-columns:1fr 1fr; gap:16px }
+@media (max-width:560px){ .rform .row{ grid-template-columns:1fr; gap:0 } }
+
+.stay-grid{ align-items:start }
+.fee-col{ display:grid; gap:clamp(18px,2vw,26px) }
+.tcard.resv-card{ background:var(--lime) }
+.resv-card p{ color:#25291F }
+.resv-card .btn{ margin-top:4px }
+dialog.sched.wide{ width:min(680px, calc(100vw - 32px)) }
+.rform fieldset{ border:0; margin:0 0 18px; padding:0; min-width:0 }
+.rform legend{ padding:0; font-weight:800; font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:9px; line-height:1.45 }
+.rform legend small, .rform .q small{ display:block; font-weight:600; letter-spacing:0; text-transform:none; color:#4A504A; font-size:.92rem; margin-top:2px }
+.choice{ display:flex; gap:12px; flex-wrap:wrap }
+.choice label{
+  display:inline-flex; align-items:center; gap:9px; cursor:pointer; font-weight:700;
+  border:1.5px solid var(--ink); border-radius:var(--r-pill); padding:9px 18px 9px 14px;
+  transition:background-color .15s ease;
+}
+.choice input{ accent-color:var(--forest-deep); width:18px; height:18px; margin:0 }
+.choice label:has(input:checked){ background:var(--lime) }
+.choice label:focus-within{ box-shadow:0 0 0 4px var(--lime) }
+.reveal{ margin:-4px 0 18px; padding:16px 16px 2px; border-left:4px solid var(--lime); background:rgba(211,250,74,.14); border-radius:0 12px 12px 0 }
+.reveal[hidden]{ display:none }
+.reveal .field{ margin-bottom:14px }
+.thanks-note{ margin:0 0 14px; font-weight:700; color:var(--forest-deep) }
+.field input[type=number]{ max-width:180px }
+.photo-note{
+  margin:6px 0 20px; padding:14px 16px; border:1.5px dashed var(--ink); border-radius:12px; font-size:.95rem;
+}
+.photo-note a{ color:var(--forest-deep); font-weight:700; word-break:break-all }
+.rform .field label{ line-height:1.45 }
+
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -596,7 +721,7 @@ a.lnk:hover{ background:rgba(211,250,74,.13); transform:translateX(3px) }
         <li><a href="#itinerary">Itinerary</a></li>
         <li><a href="#travel">Travel</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact-form">Contact</a></li>
       </ul>
     </nav>
 
@@ -811,6 +936,7 @@ a.lnk:hover{ background:rgba(211,250,74,.13); transform:translateX(3px) }
         <ul class="slots">
           <li><span class="slot-time">9:00–11:00 AM</span><span class="slot-body"><strong>Farewell Prayer Breakfast &amp; Worship at First African Baptist Church</strong><span>We gather for worship and reflection at First African Baptist Church, with closing remarks and gratitude — a chance to give thanks, share memories, and celebrate the family bond that brings us together.</span></span></li>
           <li><span class="slot-time">11:00 AM–12:00 PM</span><span class="slot-body"><strong>Checkout &amp; Departure Planning</strong><span>Hugs, goodbyes, and the beginning of our plans for 2029.</span></span></li>
+          <li><span class="slot-time">1:00–5:00 PM</span><span class="slot-body"><strong><span class="opt-tag">Optional</span> Beach Day at Savannah Beach, Tybee Island, GA</strong><span>Transportation will be provided. Confirm your beach attendance with your <button type="button" class="slot-link" data-open-dialog="resv">Reservation Info</button>.</span></span></li>
         </ul>
       </article>
 
@@ -834,25 +960,47 @@ a.lnk:hover{ background:rgba(211,250,74,.13); transform:translateX(3px) }
           <dt>1 King</dt><dd>A room to recharge</dd>
         </dl>
         <p class="note">Travel and stay are separate from reunion fees.</p>
-        <a class="btn btn-ink" href="https://www.marriott.com/en-us/hotels/savjw-jw-marriott-savannah-plant-riverside-district/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0" target="_blank" rel="noopener">
+        <p class="book-warn">ONLY BOOK ON THE SECURE PORTAL THAT WILL BE PROVIDED - DO NOT USE THE GENERAL WEBSITE</p>
+        <a class="btn btn-ink" href="https://www.marriott.com/en-us/hotels/savjv-jw-marriott-savannah-plant-riverside-district/overview/" target="_blank" rel="noopener">
           Explore the hotel
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
         </a>
       </div>
 
+      <div class="fee-col">
       <div class="tcard">
-        <h3>Reunion fees</h3>
+        <h3>Reunion Fees</h3>
         <table class="fee-table">
-          <caption class="sr-only">Reunion fees by age and length of stay</caption>
+          <caption class="sr-only">Reunion Fees by age and length of stay</caption>
           <thead>
             <tr><td></td><th scope="col">Full</th><th scope="col">Partial</th></tr>
           </thead>
           <tbody>
             <tr><th scope="row">Adults</th><td>$250</td><td>$150</td></tr>
-            <tr><th scope="row">Children</th><td>$125</td><td>$100</td></tr>
+            <tr><th scope="row">Children</th><td>$150</td><td>$100</td></tr>
           </tbody>
         </table>
         <p class="note">Fees cover the weekend's organized events. Rooms are booked separately with the hotel.</p>
+        <div class="fee-actions">
+          <a class="btn btn-red btn-sm" href="https://secure.lawpay.com/pages/mcalpinepllc/trust" target="_blank" rel="noopener">
+            Pay Now
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+          </a>
+          <button type="button" class="linkbtn" data-open-sched>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+            Payment due dates
+          </button>
+        </div>
+      </div>
+
+      <div class="tcard resv-card">
+        <h3>Reservation Info</h3>
+        <p>We are collecting attendee info to provide you with updates as we get closer to the 2027 Reunion.</p>
+        <button type="button" class="btn btn-ink btn-sm" data-open-dialog="resv">
+          Share Your Info
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
       </div>
 
       <div class="tcard">
@@ -866,8 +1014,8 @@ a.lnk:hover{ background:rgba(211,250,74,.13); transform:translateX(3px) }
       <div>
         <h3>A note on the fees</h3>
         <p>We've planned a very special weekend for everyone. As a McAlpine family member, we're asking that you make preparations to afford these fees. We appreciate that everyone has different buying power, but we believe that buy-in by all of us will continue to make the family reunion a must-attend family event.</p>
-        <p>We'll provide the payment schedule for those who would like to make contributions over time.</p>
-        <p class="soon">Payment schedule coming soon</p>
+        <p>For those who would like to make contributions over time, fees can be paid in two installments. See the payment schedule for due dates.</p>
+        <button type="button" class="btn btn-lime" data-open-sched>View payment schedule</button>
       </div>
       <div class="policy">
         <h4>No refunds</h4>
@@ -886,7 +1034,7 @@ a.lnk:hover{ background:rgba(211,250,74,.13); transform:translateX(3px) }
     <div class="faq-list">
       <details open>
         <summary>What does the reunion cost?</summary>
-        <div class="answer"><p>For the full weekend, $250 per adult and $125 per child. For a partial weekend, $150 per adult and $100 per child. Travel and your hotel room are separate — the room rate is $249 per night at the JW Marriott.</p></div>
+        <div class="answer"><p>For the full weekend, $250 per adult and $150 per child. For a partial weekend, $150 per adult and $100 per child. Travel and your hotel room are separate — the room rate is $249 per night at the JW Marriott.</p></div>
       </details>
       <details>
         <summary>Where is everyone staying?</summary>
@@ -906,7 +1054,7 @@ a.lnk:hover{ background:rgba(211,250,74,.13); transform:translateX(3px) }
       </details>
       <details>
         <summary>Can I pay in installments?</summary>
-        <div class="answer"><p>Yes. A payment schedule is being put together for anyone who would rather contribute over time. It will be posted here once it's ready.</p></div>
+        <div class="answer"><p>Yes. Reunion Fees can be paid in two installments: the 1st payment is due on or by January 1, 2027, and the final payment by March 30, 2027. Sponsorships are due on or by January 1, 2027. <button type="button" class="linkbtn" data-open-sched>See the payment schedule</button></p></div>
       </details>
       <details>
         <summary>What is the refund policy?</summary>
@@ -914,7 +1062,7 @@ a.lnk:hover{ background:rgba(211,250,74,.13); transform:translateX(3px) }
       </details>
       <details>
         <summary>How do I pay and book my room?</summary>
-        <div class="answer"><p>The hotel link below is live now. Payment details and the family itinerary app are both coming soon — check back, and they'll be linked from the section below.</p></div>
+        <div class="answer"><p>Pay your Reunion Fees online through our <a href="https://secure.lawpay.com/pages/mcalpinepllc/trust" target="_blank" rel="noopener">secure payment page</a>. Book your room using the hotel link below. The family itinerary app is coming soon and will be linked from the section below.</p></div>
       </details>
     </div>
   </div>
@@ -961,17 +1109,17 @@ a.lnk:hover{ background:rgba(211,250,74,.13); transform:translateX(3px) }
     <div>
       <p class="eyebrow">Ready when you are</p>
       <h2 class="section-title display">Make your<br>plans official.</h2>
-      <p class="lede">Use the links below to reserve your stay, handle reunion fees, and keep up with the family.</p>
+      <p class="lede">Use the links below to reserve your stay, pay your Reunion Fees, and keep up with the family.</p>
 
       <div class="link-stack">
-        <a class="lnk" href="https://www.marriott.com/en-us/hotels/savjw-jw-marriott-savannah-plant-riverside-district/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0" target="_blank" rel="noopener">
+        <a class="lnk" href="https://www.marriott.com/en-us/hotels/savjv-jw-marriott-savannah-plant-riverside-district/overview/" target="_blank" rel="noopener">
           <span><b>Reserve your stay</b><small>JW Marriott Savannah Plant Riverside District</small></span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
         </a>
-        <p class="lnk is-soon">
-          <span><b>Reunion fees</b><small>Payment details</small></span>
-          <em>Coming soon</em>
-        </p>
+        <a class="lnk" href="https://secure.lawpay.com/pages/mcalpinepllc/trust" target="_blank" rel="noopener">
+          <span><b>Reunion Fees</b><small>Pay securely online</small></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        </a>
         <p class="lnk is-soon">
           <span><b>AllEvents app</b><small>Keep up with the reunion itinerary</small></span>
           <em>Coming soon</em>
@@ -987,11 +1135,205 @@ a.lnk:hover{ background:rgba(211,250,74,.13); transform:translateX(3px) }
         <li><b data-cd="m">—</b><span>Minutes</span></li>
       </ul>
       <p>Four days in Savannah, Georgia. Save the dates, book your room, and we'll see you on the riverfront.</p>
-      <p class="fine">Family contact details for the reunion committee will be added here.</p>
+      <p class="fine">Questions for the reunion committee? <a href="#contact-form">Send us a message</a>.</p>
     </aside>
   </div>
 </section>
+
+<!-- ========================= CONTACT FORM ========================= -->
+<section class="band band-paper" id="contact-form">
+  <div class="shell form-grid">
+    <div class="form-aside">
+      <p class="eyebrow">Contact</p>
+      <h2 class="section-title display">Get in<br>touch.</h2>
+      <p class="lede">Questions about the weekend, fees, sponsorship, or travel? Send the reunion committee a note and we'll get back to you.</p>
+    </div>
+
+    <form class="cform" id="cform" action="https://formsubmit.co/mcalpinereunionlive@gmail.com" method="POST">
+      <input type="hidden" name="_cc" value="connect@mcalpinepllc.com,m_aci@comcast.net">
+      <input type="hidden" name="_subject" value="New message from the McAlpine Reunion website">
+      <input type="hidden" name="_template" value="table">
+      <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+
+      <div class="row">
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="cf-phone">Phone <small>(optional)</small></label>
+          <input id="cf-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="cf-topic">Topic</label>
+          <select id="cf-topic" name="topic">
+            <option>General question</option>
+            <option>Reunion Fees &amp; payments</option>
+            <option>Sponsorship</option>
+            <option>Hotel &amp; travel</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="cf-msg">Message</label>
+        <textarea id="cf-msg" name="message" required></textarea>
+      </div>
+      <button class="btn btn-red" type="submit">
+        Send message
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+      </button>
+      <p class="form-status" id="cform-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
 </main>
+
+<!-- ========================= PAYMENT SCHEDULE OVERLAY ========================= -->
+<dialog class="sched" id="sched" aria-labelledby="sched-title">
+  <div class="sched-head">
+    <p class="eyebrow">Reunion 2027</p>
+    <h2 id="sched-title">Payment Schedule</h2>
+    <button type="button" class="sched-close" data-close-sched aria-label="Close payment schedule">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="sched-body">
+    <div class="sched-group">
+      <h3>Reunion Fees</h3>
+      <ul class="sched-list">
+        <li><span class="what">1st Payment <a href="https://secure.lawpay.com/pages/mcalpinepllc/trust" target="_blank" rel="noopener">due</a> on or by</span><span class="when">January 1, 2027</span></li>
+        <li><span class="what">Final Payment <a href="https://secure.lawpay.com/pages/mcalpinepllc/trust" target="_blank" rel="noopener">due</a> by</span><span class="when">March 30, 2027</span></li>
+      </ul>
+    </div>
+    <div class="sched-group">
+      <h3>Sponsorship</h3>
+      <ul class="sched-list">
+        <li><span class="what"><a href="https://secure.lawpay.com/pages/mcalpinepllc/trust" target="_blank" rel="noopener">Due</a> on or by</span><span class="when">January 1, 2027</span></li>
+      </ul>
+    </div>
+    <div class="sched-foot">
+      <a class="btn btn-red" href="https://secure.lawpay.com/pages/mcalpinepllc/trust" target="_blank" rel="noopener">
+        Pay Now
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+      </a>
+      <p>Payments are processed securely through LawPay.</p>
+    </div>
+  </div>
+</dialog>
+
+<!-- ========================= RESERVATION INFO OVERLAY ========================= -->
+<dialog class="sched wide" id="resv" aria-labelledby="resv-title">
+  <div class="sched-head">
+    <p class="eyebrow">Reunion 2027</p>
+    <h2 id="resv-title">Reservation Info</h2>
+    <button type="button" class="sched-close" data-close-dialog aria-label="Close reservation info form">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="sched-body">
+    <form class="rform" id="rform" action="https://formsubmit.co/mcalpinereunionlive@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Reservation Info — McAlpine Reunion 2027">
+      <input type="hidden" name="_template" value="table">
+      <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+
+      <fieldset>
+        <legend>Full Name</legend>
+        <div class="row">
+          <div class="field">
+            <label for="rf-first">First Name</label>
+            <input id="rf-first" name="First Name" type="text" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="rf-last">Last Name</label>
+            <input id="rf-last" name="Last Name" type="text" autocomplete="family-name" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Is this your 1st McAlpine Reunion?</legend>
+        <div class="choice">
+          <label><input type="radio" name="First McAlpine Reunion" value="Yes" data-toggle="first" required> Yes</label>
+          <label><input type="radio" name="First McAlpine Reunion" value="No" data-toggle="first"> No</label>
+        </div>
+      </fieldset>
+      <div class="reveal" id="first-no" hidden>
+        <div class="field">
+          <label for="rf-last-reunion">What's the last reunion you attended? Provide the city name.</label>
+          <input id="rf-last-reunion" name="Last Reunion Attended (city)" type="text">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="rf-household">How many people are in your household?</label>
+          <input id="rf-household" name="People in Household" type="number" min="1" step="1" inputmode="numeric" required>
+        </div>
+        <div class="field">
+          <label for="rf-attending">How many people will attend the 2027 Reunion with you?</label>
+          <input id="rf-attending" name="Attending 2027 With Them" type="number" min="0" step="1" inputmode="numeric" required>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>We are encouraging our family to bring guests this year!<small>Will you bring a guest?</small></legend>
+        <div class="choice">
+          <label><input type="radio" name="Bringing a Guest" value="Yes" data-toggle="guest" required> Yes</label>
+          <label><input type="radio" name="Bringing a Guest" value="No" data-toggle="guest"> No</label>
+        </div>
+      </fieldset>
+      <div class="reveal" id="guest-yes" hidden>
+        <p class="thanks-note">Thank you! We'll do our best to make this an incredible trip!</p>
+      </div>
+      <div class="reveal" id="guest-no" hidden>
+        <div class="field">
+          <label for="rf-guest-need">What would you need to bring a guest for yourself or people coming with you in your household?</label>
+          <textarea id="rf-guest-need" name="What They Would Need to Bring a Guest" style="min-height:110px"></textarea>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Will you attend the optional Beach Day?<small>Sunday, July 18 · 1:00–5:00 PM · Savannah Beach, Tybee Island, GA. Transportation will be provided.</small></legend>
+        <div class="choice">
+          <label><input type="radio" name="Attending Beach Day" value="Yes" data-toggle="beach" required> Yes</label>
+          <label><input type="radio" name="Attending Beach Day" value="No" data-toggle="beach"> No</label>
+        </div>
+      </fieldset>
+      <div class="reveal" id="beach-yes" hidden>
+        <div class="field">
+          <label for="rf-beach-count">How many people in your group will attend Beach Day?</label>
+          <input id="rf-beach-count" name="Beach Day Headcount" type="number" min="1" step="1" inputmode="numeric">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="rf-phone">What is the best phone number to reach you?</label>
+          <input id="rf-phone" name="Phone" type="tel" autocomplete="tel" required>
+        </div>
+        <div class="field">
+          <label for="rf-email">What is the best email address to reach you?</label>
+          <input id="rf-email" name="email" type="email" autocomplete="email" required>
+        </div>
+      </div>
+
+      <p class="photo-note">📷 Please send any pictures you have from prior reunions to <a href="mailto:McAlpineReunionLive@gmail.com">McAlpineReunionLive@gmail.com</a>.</p>
+
+      <button class="btn btn-red" type="submit">
+        Submit My Info
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+      </button>
+      <p class="form-status" id="rform-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</dialog>
 
 <footer class="site-foot">
   <div class="shell">
@@ -1000,7 +1342,7 @@ a.lnk:hover{ background:rgba(211,250,74,.13); transform:translateX(3px) }
       <p class="fmotto">Family <i>/</i> Culture <i>/</i> Connection <i>/</i> Generations</p>
       <nav class="foot-nav" aria-label="Footer">
         <a href="#home">Home</a><a href="#about">About</a><a href="#itinerary">Itinerary</a>
-        <a href="#travel">Travel</a><a href="#faq">FAQ</a><a href="#sponsorship">Sponsorship</a><a href="#contact">Contact</a>
+        <a href="#travel">Travel</a><a href="#faq">FAQ</a><a href="#sponsorship">Sponsorship</a><a href="#contact-form">Contact</a>
       </nav>
     </div>
     <p class="sponsor-badge">
@@ -1017,6 +1359,19 @@ a.lnk:hover{ background:rgba(211,250,74,.13); transform:translateX(3px) }
 
 <script>
 (function(){
+  // In-page links (#itinerary, #faq, etc.): scroll on this page, even inside previews
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if(!a) return;
+    var id = a.getAttribute('href').slice(1);
+    var el = id ? document.getElementById(id) : null;
+    if(!el) return;
+    e.preventDefault();
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block:'start' });
+    try{ history.replaceState(null, '', '#'+id); }catch(err){}
+  });
+
   // Sticky header shadow
   var head = document.querySelector('.site-head');
   var onScroll = function(){ head.classList.toggle('is-stuck', window.scrollY > 8); };
@@ -1047,6 +1402,90 @@ a.lnk:hover{ background:rgba(211,250,74,.13); transform:translateX(3px) }
     }, {rootMargin:'-45% 0px -50% 0px'});
     sections.forEach(function(s){ io.observe(s); });
   }
+
+
+  // Payment schedule overlay
+  var sched = document.getElementById('sched');
+  var lastFocus = null;
+  function openSched(){
+    lastFocus = document.activeElement;
+    if(typeof sched.showModal === 'function'){ sched.showModal(); }
+    else { sched.setAttribute('open',''); }
+  }
+  function closeSched(){
+    if(typeof sched.close === 'function'){ sched.close(); } else { sched.removeAttribute('open'); }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-open-sched]'), function(b){ b.addEventListener('click', openSched); });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-close-sched]'), function(b){ b.addEventListener('click', closeSched); });
+  sched.addEventListener('click', function(e){ if(e.target === sched) closeSched(); });
+  sched.addEventListener('close', function(){ if(lastFocus) lastFocus.focus(); });
+
+  // Generic overlays (Reservation Info)
+  Array.prototype.forEach.call(document.querySelectorAll('[data-open-dialog]'), function(b){
+    b.addEventListener('click', function(){
+      var d = document.getElementById(b.getAttribute('data-open-dialog'));
+      d._returnFocus = b;
+      if(typeof d.showModal === 'function'){ d.showModal(); } else { d.setAttribute('open',''); }
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('dialog.sched'), function(d){
+    if(d.id === 'sched') return;
+    function shut(){ if(typeof d.close === 'function'){ d.close(); } else { d.removeAttribute('open'); } }
+    Array.prototype.forEach.call(d.querySelectorAll('[data-close-dialog]'), function(x){ x.addEventListener('click', shut); });
+    d.addEventListener('click', function(e){ if(e.target === d) shut(); });
+    d.addEventListener('close', function(){ if(d._returnFocus) d._returnFocus.focus(); });
+  });
+
+  // Reservation Info: show follow-up questions based on Yes / No answers
+  function showWhen(name, map){
+    var radios = document.querySelectorAll('input[data-toggle="'+name+'"]');
+    function update(){
+      var val = (document.querySelector('input[data-toggle="'+name+'"]:checked') || {}).value;
+      Object.keys(map).forEach(function(k){
+        var box = document.getElementById(map[k]);
+        var on = (val === k);
+        box.hidden = !on;
+        Array.prototype.forEach.call(box.querySelectorAll('input,textarea'), function(f){
+          f.disabled = !on;          // hidden answers are not sent
+          if(f.id === 'rf-last-reunion' || f.id === 'rf-beach-count') f.required = on;
+        });
+      });
+    }
+    Array.prototype.forEach.call(radios, function(r){ r.addEventListener('change', update); });
+    update();
+  }
+  showWhen('first', { 'No':'first-no' });
+  showWhen('guest', { 'Yes':'guest-yes', 'No':'guest-no' });
+  showWhen('beach', { 'Yes':'beach-yes' });
+
+  // Forms: send in the background and show a confirmation on the page
+  function wireForm(form, status, okMsg){
+    if(!form || !window.fetch || !window.FormData) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true; status.className = 'form-status'; status.textContent = 'Sending…';
+      fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+        method:'POST', headers:{ 'Accept':'application/json' }, body:new FormData(form)
+      }).then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
+        .then(function(res){
+          if(res.ok && String(res.j.success) === 'true'){
+            form.reset();
+            Array.prototype.forEach.call(form.querySelectorAll('input[data-toggle]'), function(r){ r.dispatchEvent(new Event('change')); });
+            status.className = 'form-status ok'; status.textContent = okMsg;
+          } else { throw new Error(res.j && res.j.message); }
+        })
+        .catch(function(){
+          status.className = 'form-status err';
+          status.textContent = 'Sorry, this could not be sent. Please try again, or email mcalpinereunionlive@gmail.com.';
+        })
+        .then(function(){ btn.disabled = false; });
+    });
+  }
+  wireForm(document.getElementById('cform'), document.getElementById('cform-status'),
+    'Thank you! Your message has been sent to the reunion committee.');
+  wireForm(document.getElementById('rform'), document.getElementById('rform-status'),
+    'Thank you! Your info has been received. We will keep you posted as the 2027 Reunion gets closer.');
 
   // Countdown to the first event
   var target = new Date('2027-07-15T15:00:00-04:00').getTime();

@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Reservation Responses · McAlpine Reunion 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Private, unlinked page: one collapsible tab per household, totals on top. Brand tokens match index.html. */
+:root{
+  --paper:#FFFFFF; --paper-2:#F4F6F1; --ink:#101010; --ink-2:#3F453E; --muted:#6A7069;
+  --forest:#0BA24F; --forest-deep:#06703A; --lime:#D3FA4A; --red:#F81F1A; --orange:#FF6A00;
+  --rule:rgba(16,16,16,.14);
+  --r-lg:22px; --r-md:14px; --r-pill:999px;
+  --display:"Anton", Impact, "Haettenschweiler", "Arial Narrow", sans-serif;
+  --ui:"Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --script:"Caveat", cursive;
+  --stub:polygon(4% 0%,96% 0%,100% 25%,96% 50%,100% 75%,96% 100%,4% 100%,0% 75%,4% 50%,0% 25%);
+  color-scheme:light;
+}
+*,*::before,*::after{ box-sizing:border-box }
+html{ -webkit-text-size-adjust:100% }
+body{ margin:0; background:var(--paper-2); color:var(--ink); font-family:var(--ui); font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased }
+button{ font:inherit; color:inherit }
+:focus-visible{ outline:3px solid var(--red); outline-offset:3px; border-radius:6px }
+.shell{ width:min(1180px, 100% - 32px); margin-inline:auto }
+
+/* header */
+.top{ background:var(--ink); color:#fff; position:relative; overflow:hidden }
+.top::before{ content:""; position:absolute; left:-40px; top:-30px; width:260px; height:70px; background:var(--lime); transform:skewY(-8deg) }
+.top::after{ content:""; position:absolute; right:-30px; top:-20px; width:120px; height:120px; background:var(--red); transform:skewY(14deg) }
+.top .shell{ position:relative; padding-block:46px 30px; display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:18px }
+.eyebrow{ font-weight:800; font-size:.74rem; letter-spacing:.22em; text-transform:uppercase; color:var(--lime); margin:0 0 10px }
+h1{ font-family:var(--display); font-weight:400; text-transform:uppercase; line-height:.9; letter-spacing:.005em; font-size:clamp(2.4rem,6vw,4.2rem); margin:0 }
+h1 em{ font-style:normal; color:var(--lime) }
+.private-tag{ display:inline-block; background:var(--red); color:#fff; font-weight:800; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; padding:.55em .95em; transform:rotate(-2deg) }
+.updated{ color:#C8D2C6; font-size:.86rem; margin:12px 0 0 }
+
+/* toolbar */
+.toolbar{ position:sticky; top:0; z-index:5; background:rgba(244,246,241,.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--rule) }
+.toolbar .shell{ display:flex; flex-wrap:wrap; gap:10px 12px; align-items:center; padding-block:12px }
+.search{ flex:1 1 240px; min-width:0; position:relative }
+.search input{ width:100%; font:inherit; font-size:.98rem; border:1.5px solid var(--ink); border-radius:var(--r-pill); padding:10px 16px 10px 40px; background:#fff }
+.search input:focus{ outline:none; box-shadow:0 0 0 4px var(--lime) }
+.search svg{ position:absolute; left:14px; top:50%; width:18px; height:18px; transform:translateY(-50%); color:var(--muted) }
+.btn{ display:inline-flex; align-items:center; gap:.5em; border:0; cursor:pointer; border-radius:var(--r-pill);
+  font-weight:800; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; padding:.85em 1.25em; white-space:nowrap;
+  background:#fff; box-shadow:inset 0 0 0 1.5px var(--ink); transition:background-color .15s ease, transform .15s ease }
+.btn:hover{ background:var(--lime) }
+.btn-ink{ background:var(--ink); color:#fff; box-shadow:none }
+.btn-ink:hover{ background:var(--forest-deep) }
+.btn svg{ width:1.15em; height:1.15em }
+
+/* totals */
+main{ padding-block:26px 70px }
+.section-label{ font-weight:800; font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--forest-deep); margin:0 0 12px }
+.tiles{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:14px }
+.tile{ background:#fff; border:1.5px solid var(--ink); border-radius:var(--r-md); padding:14px 16px 12px }
+.tile b{ display:block; font-family:var(--display); font-weight:400; font-size:2.3rem; line-height:1; color:var(--forest); font-variant-numeric:tabular-nums }
+.tile span{ display:block; margin-top:6px; font-weight:700; font-size:.82rem; color:var(--ink-2) }
+.tile.hero{ background:var(--lime) }
+.tile.hero b{ color:var(--ink) }
+.panels{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr)); gap:12px; margin-bottom:30px }
+.panel{ background:#fff; border:1.5px solid var(--ink); border-radius:var(--r-md); padding:16px 18px }
+.panel h2{ margin:0 0 10px; font-family:var(--display); font-weight:400; text-transform:uppercase; font-size:1.2rem; line-height:1 }
+.sizes{ width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums }
+.sizes th,.sizes td{ padding:7px 4px; border-bottom:1px solid var(--rule); text-align:center; font-size:.92rem }
+.sizes thead th{ font-size:.68rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--muted) }
+.sizes tbody th{ text-align:left; font-weight:700 }
+.sizes td{ font-family:var(--display); font-size:1.2rem; color:var(--forest) }
+.sizes td.zero{ color:#B8BDB6 }
+.sizes tr:last-child th,.sizes tr:last-child td{ border-bottom:0 }
+.chips{ display:flex; flex-wrap:wrap; gap:8px }
+.chip{ display:inline-flex; align-items:baseline; gap:6px; border:1.5px solid var(--ink); border-radius:var(--r-pill); padding:5px 12px; font-weight:700; font-size:.88rem; background:#fff }
+.chip b{ font-family:var(--display); font-weight:400; font-size:1.1rem; color:var(--forest); line-height:1 }
+.needs{ list-style:none; margin:0; padding:0; display:grid; gap:8px }
+.needs li{ font-size:.92rem }
+.needs a{ color:var(--forest-deep); font-weight:800 }
+.empty-note{ color:var(--muted); font-size:.92rem; margin:0 }
+
+/* response tabs */
+.list-head{ display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px; margin:0 0 12px }
+.list-head h2{ margin:0; font-family:var(--display); font-weight:400; text-transform:uppercase; font-size:clamp(1.6rem,3vw,2.2rem); line-height:1 }
+.count{ font-weight:700; color:var(--muted); font-size:.9rem }
+.list{ display:grid; gap:10px }
+details.resp{ background:#fff; border:1.5px solid var(--ink); border-radius:var(--r-md); overflow:hidden }
+details.resp[open]{ box-shadow:0 18px 40px -28px rgba(0,0,0,.45) }
+details.resp > summary{ list-style:none; cursor:pointer; display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:6px 14px; align-items:center; padding:14px 16px }
+details.resp > summary::-webkit-details-marker{ display:none }
+details.resp > summary:hover{ background:rgba(211,250,74,.22) }
+.num{ font-family:var(--display); font-size:1.15rem; background:var(--ink); color:var(--lime); min-width:44px; text-align:center; padding:.3em .5em .22em; border-radius:10px; font-variant-numeric:tabular-nums }
+.who{ min-width:0 }
+.who strong{ display:block; font-family:var(--display); font-weight:400; text-transform:uppercase; font-size:1.3rem; line-height:1.05; overflow-wrap:anywhere }
+.who small{ display:block; color:var(--muted); font-weight:600; font-size:.82rem; margin-top:3px }
+.badges{ display:flex; flex-wrap:wrap; gap:6px; justify-content:flex-end; align-items:center }
+.badge{ font-weight:800; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; border:1.5px solid var(--ink); border-radius:var(--r-pill); padding:4px 9px; white-space:nowrap; background:#fff }
+.badge.lime{ background:var(--lime) }
+.badge.red{ background:var(--red); color:#fff; border-color:var(--red) }
+.caret{ width:22px; height:22px; transition:transform .2s ease; flex:none }
+details[open] .caret{ transform:rotate(180deg) }
+.body{ border-top:1.5px solid var(--ink); padding:4px 16px 16px }
+table.answers{ width:100%; border-collapse:collapse; margin-top:10px }
+table.answers caption{ text-align:left; margin:14px 0 6px }
+table.answers caption span{ display:inline-block; background:var(--lime); font-family:var(--display); text-transform:uppercase; font-size:1rem; letter-spacing:.03em; padding:.28em .8em .22em; clip-path:var(--stub) }
+table.answers th, table.answers td{ text-align:left; vertical-align:top; padding:9px 10px; border-bottom:1px solid var(--rule); font-size:.95rem }
+table.answers th{ width:38%; font-weight:700; color:var(--ink-2) }
+table.answers td{ white-space:pre-wrap; overflow-wrap:anywhere }
+table.answers td.blank{ color:#B8BDB6 }
+table.answers tr:nth-child(even) th, table.answers tr:nth-child(even) td{ background:#FAFBF8 }
+table.answers a{ color:var(--forest-deep); font-weight:700 }
+.resp-foot{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; margin-top:14px; color:var(--muted); font-size:.82rem }
+.linkish{ background:none; border:0; padding:0; cursor:pointer; font-weight:800; font-size:.76rem; letter-spacing:.08em; text-transform:uppercase; color:var(--forest-deep); text-decoration:underline; text-underline-offset:3px }
+.linkish.danger{ color:var(--red) }
+.hidden-wrap{ margin-top:26px }
+.hidden-wrap > summary{ cursor:pointer; font-weight:800; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted) }
+.hidden-wrap .list{ margin-top:12px; opacity:.85 }
+
+/* states */
+.state{ background:#fff; border:1.5px solid var(--ink); border-radius:var(--r-lg); padding:clamp(26px,4vw,46px); text-align:center; max-width:640px; margin:40px auto }
+.state h2{ font-family:var(--display); font-weight:400; text-transform:uppercase; font-size:clamp(1.8rem,4vw,2.6rem); line-height:1; margin:0 0 12px }
+.state p{ margin:0 auto; max-width:46ch; color:var(--ink-2) }
+.state .script{ font-family:var(--script); font-weight:700; font-size:1.6rem; color:var(--ink); background:var(--lime); padding:0 .5em; display:inline-block; transform:rotate(-2deg); margin-bottom:14px }
+[hidden]{ display:none !important }
+
+@media (max-width:640px){
+  .top::after{ display:none }
+  .top::before{ width:180px; height:50px }
+  details.resp > summary{ grid-template-columns:auto minmax(0,1fr); }
+  .badges{ grid-column:1 / -1; justify-content:flex-start }
+  table.answers th, table.answers td{ display:block; width:auto; border-bottom:0; padding:2px 0 }
+  table.answers th{ padding-top:10px; font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted) }
+  table.answers tr{ display:block; border-bottom:1px solid var(--rule); padding-bottom:8px }
+  table.answers tr:nth-child(even) th, table.answers tr:nth-child(even) td{ background:none }
+}
+@media print{
+  .toolbar, .resp-foot, .hidden-wrap, .top::before, .top::after{ display:none !important }
+  body{ background:#fff }
+  details.resp{ break-inside:avoid; box-shadow:none }
+  details.resp .body{ display:block !important }
+}
+@media (prefers-reduced-motion:reduce){ .caret{ transition:none } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="shell">
+    <div>
+      <p class="eyebrow">McAlpine Family Reunion 2027 · Savannah, GA</p>
+      <h1>Reservation <em>Responses</em></h1>
+      <p class="updated" id="updated">Loading…</p>
+    </div>
+    <span class="private-tag">Private link · do not forward</span>
+  </div>
+</header>
+
+<div class="toolbar" id="toolbar" hidden>
+  <div class="shell">
+    <label class="search">
+      <span class="sr-only" style="position:absolute;left:-9999px">Search responses</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Search by name, city, phone or email" autocomplete="off">
+    </label>
+    <button class="btn" type="button" id="expand">Expand all</button>
+    <button class="btn" type="button" id="collapse">Collapse all</button>
+    <button class="btn" type="button" id="refresh">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg>
+      Refresh
+    </button>
+    <button class="btn btn-ink" type="button" id="csv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>
+      Download spreadsheet
+    </button>
+  </div>
+</div>
+
+<main class="shell">
+  <div class="state" id="state-lock" hidden>
+    <span class="script">almost there</span>
+    <h2>This page needs the private link</h2>
+    <p>Reservation responses are only visible through the private link shared by the reunion committee. If you were sent one, open it exactly as it was sent.</p>
+  </div>
+  <div class="state" id="state-error" hidden>
+    <h2>Couldn't load responses</h2>
+    <p id="state-error-msg">Check your connection and try again.</p>
+    <p style="margin-top:18px"><button class="btn btn-ink" type="button" id="retry">Try again</button></p>
+  </div>
+
+  <div id="content" hidden>
+    <section aria-labelledby="totals-label">
+      <p class="section-label" id="totals-label">At a glance</p>
+      <div class="tiles" id="tiles"></div>
+      <div class="panels">
+        <div class="panel">
+          <h2>T-shirt order</h2>
+          <table class="sizes" id="sizes-adult"></table>
+          <table class="sizes" id="sizes-youth" style="margin-top:12px"></table>
+        </div>
+        <div class="panel">
+          <h2>How to reach everyone</h2>
+          <div class="chips" id="contact-chips"></div>
+          <h2 style="margin-top:18px">Accessibility &amp; dietary needs</h2>
+          <ul class="needs" id="needs"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="list-label">
+      <div class="list-head">
+        <h2 id="list-label">Households</h2>
+        <span class="count" id="count"></span>
+      </div>
+      <div class="list" id="list"></div>
+      <p class="empty-note" id="no-match" hidden>No responses match your search.</p>
+      <details class="hidden-wrap" id="hidden-wrap" hidden>
+        <summary id="hidden-summary">Hidden responses</summary>
+        <div class="list" id="hidden-list"></div>
+      </details>
+    </section>
+  </div>
+</main>
+
+<script>
+(function(){
+  var DB = 'https://cenmvodewyrnohxiyyjd.supabase.co/rest/v1/rpc/';
+  var API_KEY = 'sb_publishable_WJnjmjbTPQHTzoMFrkMwTw_OK3yUpPK';
+
+  // The private key travels in the link's #fragment, which browsers never send to any server.
+  function readKey(){
+    var m = (location.hash || '').match(/(?:^#|&)k(?:ey)?=([^&]+)/);
+    if(m) return decodeURIComponent(m[1]);
+    var q = new URLSearchParams(location.search).get('key');
+    return q || '';
+  }
+  var KEY = readKey();
+
+  // Form questions in the order they appear on the site, grouped like the form.
+  var GROUPS = [
+    ['Primary household contact', [
+      ['First Name','First name'], ['Last Name','Last name'], ['Preferred Name','Preferred name'],
+      ['__address','Mailing address'],
+      ['Primary Phone','Primary phone'], ['Alternate Phone','Alternate phone'], ['email','Email'],
+      ['Preferred Contact Method','Preferred contact method']
+    ]],
+    ['Household & reunion planning', [
+      ['First McAlpine Reunion','First McAlpine Reunion?'], ['Last Reunion Attended (city)','Last reunion attended'],
+      ['People in Household','People in household'], ['Household Members','Household members'],
+      ['Adults Attending','Adults attending'], ['Children Attending','Children attending'], ['Total Attending','Total attending'],
+      ['Bringing a Guest','Bringing a guest?'], ['What They Would Need to Bring a Guest','What they would need to bring a guest'],
+      ['Attending Beach Day','Attending Beach Day?'], ['Beach Day Headcount','Beach Day headcount'],
+      ['Accessibility or Dietary Needs','Accessibility or dietary needs'],
+      ['Emergency Contact Name','Emergency contact'], ['Emergency Contact Phone','Emergency contact phone']
+    ]],
+    ['Official reunion T-shirt', [
+      ['T-Shirt Size','Adult T-shirt size'], ['T-Shirt Quantity','How many'],
+      ['Ordering for a Child','Ordering for a child?'], ['Child T-Shirt Size',"Child's T-shirt size"]
+    ]],
+    ['Anything else', [ ['Additional Notes','Additional notes'] ]]
+  ];
+  var ADDRESS_KEYS = ['Street Address','Address Line 2','City','State','ZIP Code'];
+  var KNOWN = {}; ADDRESS_KEYS.forEach(function(k){ KNOWN[k] = 1; });
+  GROUPS.forEach(function(g){ g[1].forEach(function(q){ KNOWN[q[0]] = 1; }); });
+  // Only questions that appear when the answer before them calls for them
+  var CONDITIONAL = { 'Last Reunion Attended (city)':1, 'What They Would Need to Bring a Guest':1, 'Beach Day Headcount':1, 'Child T-Shirt Size':1 };
+  var ADULT_SIZES = ['S','M','L','XL','XXL','XXXL'];
+  var YOUTH_SIZES = ['Youth XS','Youth S','Youth M','Youth L','Youth XL'];
+
+  var rows = [];
+  var $ = function(id){ return document.getElementById(id); };
+  function el(tag, cls, text){ var e = document.createElement(tag); if(cls) e.className = cls; if(text != null) e.textContent = text; return e; }
+  function num(v){ var n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
+  function val(a, k){ var v = a[k]; return (v == null) ? '' : String(v).trim(); }
+  function fullName(a){ return [val(a,'First Name'), val(a,'Last Name')].filter(Boolean).join(' ') || 'Unnamed response'; }
+  function address(a){
+    var line1 = [val(a,'Street Address'), val(a,'Address Line 2')].filter(Boolean).join(', ');
+    var line2 = [val(a,'City'), [val(a,'State'), val(a,'ZIP Code')].filter(Boolean).join(' ')].filter(Boolean).join(', ');
+    return [line1, line2].filter(Boolean).join('\n');
+  }
+  function when(iso){
+    var d = new Date(iso);
+    return d.toLocaleString(undefined, { month:'short', day:'numeric', year:'numeric', hour:'numeric', minute:'2-digit' });
+  }
+
+  function call(fn, body){
+    return fetch(DB + fn, {
+      method:'POST', headers:{ 'Content-Type':'application/json', 'apikey':API_KEY }, body:JSON.stringify(body)
+    }).then(function(r){
+      return r.json().catch(function(){ return null; }).then(function(j){
+        if(!r.ok){ var err = new Error((j && j.message) || ('HTTP ' + r.status)); err.status = r.status; err.code = j && j.code; throw err; }
+        return j;
+      });
+    });
+  }
+
+  function show(which){
+    ['state-lock','state-error','content'].forEach(function(id){ $(id).hidden = (id !== which); });
+    $('toolbar').hidden = (which !== 'content');
+  }
+
+  function load(){
+    if(!KEY){ show('state-lock'); $('updated').textContent = ''; return; }
+    var open = {}; Array.prototype.forEach.call(document.querySelectorAll('details.resp[open]'), function(d){ open[d.dataset.id] = 1; });
+    $('updated').textContent = 'Loading…';
+    call('get_reservations', { p_key: KEY }).then(function(data){
+      rows = (data || []).map(function(r, i){ r.n = i + 1; r.answers = r.answers || {}; return r; });
+      render(open);
+      show('content');
+      $('updated').textContent = 'Updated ' + new Date().toLocaleTimeString(undefined, { hour:'numeric', minute:'2-digit' }) + ' · refreshes automatically';
+    }).catch(function(err){
+      if(err.code === '42501' || err.status === 401 || err.status === 403){ show('state-lock'); $('updated').textContent = ''; return; }
+      $('state-error-msg').textContent = 'Check your connection and try again. (' + err.message + ')';
+      show('state-error'); $('updated').textContent = '';
+    });
+  }
+
+  function render(openIds){
+    var live = rows.filter(function(r){ return !r.archived; });
+    var hid = rows.filter(function(r){ return r.archived; });
+
+    // ---- totals
+    var t = { households: live.length, adults:0, children:0, total:0, guests:0, beachYes:0, beachPeople:0, first:0 };
+    var adult = {}, youth = {}, cm = { Phone:0, Text:0, Email:0, Mail:0 }, needs = [];
+    ADULT_SIZES.forEach(function(s){ adult[s] = 0; }); YOUTH_SIZES.forEach(function(s){ youth[s] = 0; });
+    live.forEach(function(r){
+      var a = r.answers;
+      var ad = num(a['Adults Attending']), ch = num(a['Children Attending']);
+      t.adults += ad; t.children += ch; t.total += (a['Total Attending'] != null && a['Total Attending'] !== '') ? num(a['Total Attending']) : ad + ch;
+      if(val(a,'Bringing a Guest') === 'Yes') t.guests++;
+      if(val(a,'Attending Beach Day') === 'Yes'){ t.beachYes++; t.beachPeople += num(a['Beach Day Headcount']); }
+      if(val(a,'First McAlpine Reunion') === 'Yes') t.first++;
+      var s = val(a,'T-Shirt Size'); if(s){ adult[s] = (adult[s] || 0) + Math.max(1, num(a['T-Shirt Quantity']) || 1); }
+      var ys = val(a,'Child T-Shirt Size'); if(val(a,'Ordering for a Child') === 'Yes' && ys){ youth[ys] = (youth[ys] || 0) + 1; }
+      val(a,'Preferred Contact Method').split(',').forEach(function(m){ m = m.trim(); if(m) cm[m] = (cm[m] || 0) + 1; });
+      var nd = val(a,'Accessibility or Dietary Needs'); if(nd) needs.push({ r:r, text:nd });
+    });
+    var tiles = $('tiles'); tiles.textContent = '';
+    [['Households', t.households, true], ['Total attending', t.total, true], ['Adults', t.adults], ['Children', t.children],
+     ['First-timers', t.first], ['Bringing a guest', t.guests], ['Beach Day people', t.beachPeople]].forEach(function(x){
+      var d = el('div', 'tile' + (x[2] ? ' hero' : '')); d.appendChild(el('b', null, String(x[1]))); d.appendChild(el('span', null, x[0])); tiles.appendChild(d);
+    });
+    function sizeTable(id, label, sizes, counts){
+      var tb = $(id); tb.textContent = '';
+      var thead = el('thead'), hr = el('tr'); hr.appendChild(el('th', null, label));
+      sizes.forEach(function(s){ hr.appendChild(el('th', null, s.replace('Youth ', 'Y-'))); });
+      hr.appendChild(el('th', null, 'Total')); thead.appendChild(hr); tb.appendChild(thead);
+      var tbody = el('tbody'), r = el('tr'), sum = 0; r.appendChild(el('th', null, 'Shirts'));
+      sizes.forEach(function(s){ var c = counts[s] || 0; sum += c; r.appendChild(el('td', c ? '' : 'zero', String(c))); });
+      Object.keys(counts).forEach(function(s){ if(sizes.indexOf(s) === -1) sum += counts[s]; });
+      r.appendChild(el('td', null, String(sum))); tbody.appendChild(r); tb.appendChild(tbody);
+    }
+    sizeTable('sizes-adult', 'Adult', ADULT_SIZES, adult);
+    sizeTable('sizes-youth', 'Youth', YOUTH_SIZES, youth);
+    var chips = $('contact-chips'); chips.textContent = '';
+    Object.keys(cm).forEach(function(k){ var c = el('span', 'chip'); c.appendChild(el('b', null, String(cm[k]))); c.appendChild(document.createTextNode(k)); chips.appendChild(c); });
+    var nl = $('needs'); nl.textContent = '';
+    if(!needs.length){ nl.appendChild(el('li', 'empty-note', 'None reported yet.')); }
+    needs.forEach(function(n){
+      var li = el('li'); var a = el('a', null, fullName(n.r.answers)); a.href = '#resp-' + n.r.id;
+      a.addEventListener('click', function(e){ e.preventDefault(); var d = $('resp-' + n.r.id); d.open = true; d.scrollIntoView({ block:'start', behavior:'smooth' }); });
+      li.appendChild(a); li.appendChild(document.createTextNode(' — ' + n.text)); nl.appendChild(li);
+    });
+
+    // ---- tabs (newest first)
+    var list = $('list'); list.textContent = '';
+    live.slice().reverse().forEach(function(r){ list.appendChild(tab(r, openIds)); });
+    if(!live.length){ list.appendChild(el('p', 'empty-note', 'No responses yet. As families submit the Reservation Info form, each household appears here as its own tab.')); }
+    var hl = $('hidden-list'); hl.textContent = '';
+    hid.slice().reverse().forEach(function(r){ hl.appendChild(tab(r, openIds)); });
+    $('hidden-wrap').hidden = !hid.length;
+    $('hidden-summary').textContent = 'Hidden responses (' + hid.length + ') — not counted in totals';
+    filter();
+  }
+
+  function tab(r, openIds){
+    var a = r.answers;
+    var d = el('details', 'resp'); d.id = 'resp-' + r.id; d.dataset.id = r.id;
+    if(openIds && openIds[r.id]) d.open = true;
+    d.dataset.search = (fullName(a) + ' ' + val(a,'Preferred Name') + ' ' + val(a,'City') + ' ' + val(a,'State') + ' ' + val(a,'email') + ' ' + val(a,'Primary Phone') + ' ' + val(a,'Household Members')).toLowerCase();
+    var s = el('summary');
+    s.appendChild(el('span', 'num', '#' + r.n));
+    var who = el('span', 'who');
+    var nm = fullName(a); if(val(a,'Preferred Name')) nm += ' (' + val(a,'Preferred Name') + ')';
+    who.appendChild(el('strong', null, nm));
+    var sub = [when(r.created_at)]; if(val(a,'City')) sub.push(val(a,'City') + (val(a,'State') ? ', ' + val(a,'State') : ''));
+    who.appendChild(el('small', null, sub.join(' · ')));
+    s.appendChild(who);
+    var b = el('span', 'badges');
+    var ad = num(a['Adults Attending']), ch = num(a['Children Attending']);
+    if(a['Adults Attending'] != null) b.appendChild(el('span', 'badge lime', ad + ' adult' + (ad === 1 ? '' : 's') + ' · ' + ch + ' child' + (ch === 1 ? '' : 'ren')));
+    if(val(a,'T-Shirt Size')) b.appendChild(el('span', 'badge', 'Shirt ' + val(a,'T-Shirt Size') + (num(a['T-Shirt Quantity']) > 1 ? ' ×' + num(a['T-Shirt Quantity']) : '')));
+    if(val(a,'Attending Beach Day') === 'Yes') b.appendChild(el('span', 'badge', 'Beach Day'));
+    if(val(a,'First McAlpine Reunion') === 'Yes') b.appendChild(el('span', 'badge', 'First reunion'));
+    if(val(a,'Accessibility or Dietary Needs')) b.appendChild(el('span', 'badge red', 'Needs'));
+    var caret = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); caret.setAttribute('viewBox', '0 0 24 24'); caret.setAttribute('class', 'caret'); caret.setAttribute('aria-hidden', 'true');
+    caret.innerHTML = '<path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>';
+    b.appendChild(caret); s.appendChild(b); d.appendChild(s);
+
+    var body = el('div', 'body');
+    GROUPS.forEach(function(g){
+      var tb = el('table', 'answers'); var cap = el('caption'); cap.appendChild(el('span', null, g[0])); tb.appendChild(cap);
+      var tbody = el('tbody'), any = false;
+      g[1].forEach(function(q){
+        var key = q[0], v = key === '__address' ? address(a) : val(a, key);
+        if(CONDITIONAL[key] && !v) return;
+        var tr = el('tr'); tr.appendChild(el('th', null, q[1]));
+        var td = el('td', v ? '' : 'blank');
+        if(v && key === 'email'){ var m = el('a', null, v); m.href = 'mailto:' + v; td.appendChild(m); }
+        else if(v && /Phone/.test(key)){ var p = el('a', null, v); p.href = 'tel:' + v.replace(/[^0-9+]/g, ''); td.appendChild(p); }
+        else td.textContent = v || '—';
+        tr.appendChild(td); tbody.appendChild(tr); any = true;
+      });
+      if(g[0] === 'Anything else'){
+        Object.keys(a).forEach(function(k){
+          if(KNOWN[k] || k.charAt(0) === '_') return;
+          var v = val(a, k); if(!v) return;
+          var tr = el('tr'); tr.appendChild(el('th', null, k)); tr.appendChild(el('td', null, v)); tbody.appendChild(tr); any = true;
+        });
+      }
+      if(any){ tb.appendChild(tbody); body.appendChild(tb); }
+    });
+    var foot = el('div', 'resp-foot');
+    foot.appendChild(el('span', null, 'Response #' + r.n + ' · received ' + when(r.created_at)));
+    var act = el('button', 'linkish' + (r.archived ? '' : ' danger'), r.archived ? 'Restore this response' : 'Hide this response');
+    act.type = 'button';
+    act.addEventListener('click', function(){
+      if(!r.archived && act.dataset.confirm !== '1'){ act.dataset.confirm = '1'; act.textContent = 'Click again to hide (duplicates, tests)'; setTimeout(function(){ act.dataset.confirm = ''; act.textContent = 'Hide this response'; }, 4000); return; }
+      act.disabled = true; act.textContent = 'Saving…';
+      call('set_reservation_archived', { p_key: KEY, p_id: r.id, p_archived: !r.archived }).then(load)
+        .catch(function(){ act.disabled = false; act.textContent = 'Could not save — try again'; });
+    });
+    foot.appendChild(act); body.appendChild(foot); d.appendChild(body);
+    return d;
+  }
+
+  function filter(){
+    var q = ($('q').value || '').trim().toLowerCase(), shown = 0, total = 0;
+    Array.prototype.forEach.call($('list').querySelectorAll('details.resp'), function(d){
+      total++; var on = !q || d.dataset.search.indexOf(q) !== -1; d.hidden = !on; if(on) shown++;
+    });
+    $('count').textContent = q ? (shown + ' of ' + total + ' households') : (total + (total === 1 ? ' household' : ' households'));
+    $('no-match').hidden = !(q && total && !shown);
+  }
+
+  function csv(){
+    var keys = ['#','Submitted'];
+    GROUPS.forEach(function(g){ g[1].forEach(function(q){ if(q[0] === '__address') keys.push.apply(keys, ADDRESS_KEYS); else keys.push(q[0]); }); });
+    rows.forEach(function(r){ Object.keys(r.answers).forEach(function(k){ if(k.charAt(0) !== '_' && keys.indexOf(k) === -1) keys.push(k); }); });
+    keys.push('Hidden');
+    var esc = function(v){ v = (v == null) ? '' : String(v); if(/^[=+\-@]/.test(v)) v = "'" + v; return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
+    var lines = [keys.map(esc).join(',')];
+    rows.forEach(function(r){
+      lines.push(keys.map(function(k){
+        if(k === '#') return r.n; if(k === 'Submitted') return esc(new Date(r.created_at).toLocaleString()); if(k === 'Hidden') return r.archived ? 'Yes' : '';
+        return esc(r.answers[k]);
+      }).join(','));
+    });
+    var blob = new Blob(['﻿' + lines.join('\r\n')], { type:'text/csv;charset=utf-8' });
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+    a.download = 'McAlpine-Reunion-2027-responses-' + new Date().toISOString().slice(0,10) + '.csv';
+    document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  }
+
+  $('q').addEventListener('input', filter);
+  $('expand').addEventListener('click', function(){ Array.prototype.forEach.call($('list').querySelectorAll('details.resp:not([hidden])'), function(d){ d.open = true; }); });
+  $('collapse').addEventListener('click', function(){ Array.prototype.forEach.call(document.querySelectorAll('details.resp'), function(d){ d.open = false; }); });
+  $('refresh').addEventListener('click', load);
+  $('retry').addEventListener('click', load);
+  $('csv').addEventListener('click', csv);
+  window.addEventListener('hashchange', function(){ KEY = readKey(); load(); });
+  window.addEventListener('beforeprint', function(){ Array.prototype.forEach.call(document.querySelectorAll('details.resp'), function(d){ d.open = true; }); });
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden && KEY) load(); });
+  setInterval(function(){ if(!document.hidden && KEY) load(); }, 120000);
+  load();
+})();
+</script>
+</body>
+</html>

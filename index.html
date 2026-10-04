@@ -1714,17 +1714,32 @@ dialog.sched.wide .sched-head{ position:sticky; top:0; z-index:3 }
   })();
 
   // Forms: send in the background and show a confirmation on the page
-  function wireForm(form, status, okMsg){
+  // Reservation Info answers are also saved to the reunion's private responses database
+  var RESP_DB = 'https://cenmvodewyrnohxiyyjd.supabase.co/rest/v1/rpc/submit_reservation';
+  var RESP_KEY = 'sb_publishable_WJnjmjbTPQHTzoMFrkMwTw_OK3yUpPK';   // public, insert-only
+  function saveResponse(form){
+    var payload = {};
+    new FormData(form).forEach(function(v, k){ if(typeof v === 'string') payload[k] = v; });
+    return fetch(RESP_DB, {
+      method:'POST', headers:{ 'Content-Type':'application/json', 'apikey':RESP_KEY },
+      body: JSON.stringify({ payload: payload })
+    }).then(function(r){ return r.ok; }).catch(function(){ return false; });
+  }
+
+  function wireForm(form, status, okMsg, alsoSave){
     if(!form || !window.fetch || !window.FormData) return;
     form.addEventListener('submit', function(e){
       e.preventDefault();
       var btn = form.querySelector('button[type="submit"]');
       btn.disabled = true; status.className = 'form-status'; status.textContent = 'Sending…';
+      var saved = alsoSave ? alsoSave(form) : Promise.resolve(false);
       fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
         method:'POST', headers:{ 'Accept':'application/json' }, body:new FormData(form)
       }).then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
+        .catch(function(){ return { ok:false, j:{} }; })
+        .then(function(res){ return saved.then(function(dbOk){ res.dbOk = dbOk; return res; }); })
         .then(function(res){
-          if(res.ok && String(res.j.success) === 'true'){
+          if((res.ok && String(res.j.success) === 'true') || res.dbOk){
             form.reset();
             Array.prototype.forEach.call(form.querySelectorAll('input[data-toggle]'), function(r){ r.dispatchEvent(new Event('change')); });
             status.className = 'form-status ok'; status.textContent = okMsg;
@@ -1740,7 +1755,7 @@ dialog.sched.wide .sched-head{ position:sticky; top:0; z-index:3 }
   wireForm(document.getElementById('cform'), document.getElementById('cform-status'),
     'Thank you! Your message has been sent to the reunion committee.');
   wireForm(document.getElementById('rform'), document.getElementById('rform-status'),
-    'Thank you! Your info has been received. We will keep you posted as the 2027 Reunion gets closer.');
+    'Thank you! Your info has been received. We will keep you posted as the 2027 Reunion gets closer.', saveResponse);
 
   // Countdown to the first event
   var target = new Date('2027-07-15T15:00:00-04:00').getTime();

@@ -1,9 +1,59 @@
 # McAlpine Family Reunion 2027 — Session Notes
 
-**Deliverables:** `index.html` + `mcalpine-2027-promo.mp4` (**must be uploaded together, same folder**) · `responses.html` (private Responses page) · `McAlpine_Sponsorship_Agreement.docx`
-**Sessions:** 01 (build from mockup) · 02 (aligned to the written prompt) · 03 (real copy installed) · 04 (seal replaced and retreated) · 05 (Itinerary) · 06 (fees & payment policy) · 07 (sponsorship) · 08 (promo video) · 09 (itinerary from video script) · 10 (proofing pass) · 04 (seal rebuilt) · 11 (promo video rebuilt) · 12 (Reservation Info form + Travel layout) · 13 (private Responses page)
+**Deliverables:** `index.html` + `mcalpine-2027-promo.mp4` (**must be uploaded together, same folder**) · `responses.html` (private Responses page) · `college.html` + `vercel.json` (private College Tracker at /college) · `McAlpine_Sponsorship_Agreement.docx`
+**Sessions:** 01 (build from mockup) · 02 (aligned to the written prompt) · 03 (real copy installed) · 04 (seal replaced and retreated) · 05 (Itinerary) · 06 (fees & payment policy) · 07 (sponsorship) · 08 (promo video) · 09 (itinerary from video script) · 10 (proofing pass) · 04 (seal rebuilt) · 11 (promo video rebuilt) · 12 (Reservation Info form + Travel layout) · 13 (private Responses page) · 14 (private College Tracker)
 
-> Read this file before starting new work on this site.
+> Read this file before starting new work on this site. This is the current notes file. The older `SESSION-NOTES (1).md` in the repo stops at Session 12 and can be deleted.
+
+---
+
+## Session 14: private College Tracker at /college (Oct 21, 2026)
+
+The client asked for a second secret-link page at **www.mcalpinereunion.com/college**. It holds the client's Scholarship Tracker (version 3), with the Engineering Admissions Matrix kept as part of the page.
+
+### What's on the page
+- **Title:** "College Tracker", styled like the rest of the site: black header band, Anton headings, lime and green accents, ink-outlined cards and pill buttons.
+- **Progress tiles and deadline calendar:**
+  - The calendar now includes the **college application deadlines** (marked APPLY) and **document deadlines** (marked DOCS) for the nine schools, alongside the scholarship deadlines.
+  - It opens on the next 4 months (2 on phones). "Show all months" shows the rest.
+- **Tabs:**
+  - **Outside**, **University**, **Costs**, **Your lists** and **Excluded:** unchanged from the tracker.
+  - **Admissions:** the full Engineering Admissions Matrix: next deadlines, application dates and three years of admitted-student profiles, with sources.
+- **Live dates:** the matrix's "11 days / Due Nov 1" labels were fixed text as of Oct 21. They are now calculated from today's date, so they stay right as deadlines pass. The "Next deadlines" cards also move on to the regular-decision dates once early action has passed.
+- **Data:** all scholarship data is unchanged from the tracker, and the matrix's tables and sources are unchanged. The Scholarship Matrix's scholarships were already in the tracker, so it was not added separately.
+- **Tracking marks** (selected, criteria, Begin / Complete / Submit, fees, notes) are saved in each browser, as before. "Copy backup" and "Restore from backup" move them between devices, including from the earlier tracker artifact.
+
+### How the secret works (different from Session 13)
+The repository is **public**, so an unlinked page would not be secret: anyone could read it on GitHub.
+- **`college.html` is sealed:**
+  - It holds only a lock screen plus the page, encrypted with AES-GCM and a 128-bit key.
+  - The secret key at the end of the private link (`/college#k=…`) unlocks it in the browser.
+  - The part after `#` is never sent to any server.
+- **Without the key, or with a wrong one,** the page shows "This page needs the private link". Nothing about the content is visible in the file, the repo or the site.
+- **The private link was given to the client in chat** and is deliberately not written here.
+- **Switching tabs keeps the key in the address** (`#k=…&t=admissions`), so reloading or bookmarking still works.
+- **`vercel.json`** (new) maps `/college` to `college.html`. It has no other effect on the site.
+
+### Editing the page later
+Never upload the readable version to the repo. To change it:
+1. Decrypt `college.html` with the key into a readable copy.
+2. Edit that copy.
+3. Encrypt it again with the same key, so the existing link keeps working.
+
+The build tools (`build.py`, `crypt.mjs seal|unseal`) and the readable source were kept outside the repo, in the working session's `/home/claude/college-src/`.
+
+If those are gone, the format is simple to reverse with the key:
+- The `payload` script tag holds base64 data.
+- Its first 12 bytes are the IV.
+- The rest is the AES-GCM ciphertext.
+- The key is base64url.
+
+Using a new key would create a new link and stop the old one working.
+
+### Files changed
+- `college.html`: new (sealed).
+- `vercel.json`: new.
+- `SESSION-NOTES 1.md`: this entry.
 
 ---
 

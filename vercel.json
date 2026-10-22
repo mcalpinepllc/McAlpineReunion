@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/college", "destination": "/college.html" },
+    { "source": "/college/", "destination": "/college.html" }
+  ]
+}

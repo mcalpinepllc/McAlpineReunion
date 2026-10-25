@@ -1,6 +1,20 @@
 {
   "rewrites": [
-    { "source": "/college", "destination": "/college.html" },
-    { "source": "/college/", "destination": "/college.html" }
+    {
+      "source": "/college",
+      "destination": "/college.html"
+    },
+    {
+      "source": "/college/",
+      "destination": "/college.html"
+    },
+    {
+      "source": "/college-alston",
+      "destination": "/college.html"
+    },
+    {
+      "source": "/college-alston/",
+      "destination": "/college.html"
+    }
   ]
 }

@@ -1,9 +1,59 @@
 # McAlpine Family Reunion 2027 — Session Notes
 
 **Deliverables:** `index.html` + `mcalpine-2027-promo.mp4` (**must be uploaded together, same folder**) · `responses.html` (private Responses page) · `college.html` + `vercel.json` (private College Tracker at /college) · `McAlpine_Sponsorship_Agreement.docx`
-**Sessions:** 01 (build from mockup) · 02 (aligned to the written prompt) · 03 (real copy installed) · 04 (seal replaced and retreated) · 05 (Itinerary) · 06 (fees & payment policy) · 07 (sponsorship) · 08 (promo video) · 09 (itinerary from video script) · 10 (proofing pass) · 04 (seal rebuilt) · 11 (promo video rebuilt) · 12 (Reservation Info form + Travel layout) · 13 (private Responses page) · 14 (private College Tracker)
+**Sessions:** 01 (build from mockup) · 02 (aligned to the written prompt) · 03 (real copy installed) · 04 (seal replaced and retreated) · 05 (Itinerary) · 06 (fees & payment policy) · 07 (sponsorship) · 08 (promo video) · 09 (itinerary from video script) · 10 (proofing pass) · 04 (seal rebuilt) · 11 (promo video rebuilt) · 12 (Reservation Info form + Travel layout) · 13 (private Responses page) · 14 (private College Tracker) · 15 (two-track tracker at /college, key /college-alston, saves to the site)
 
 > Read this file before starting new work on this site. This is the current notes file. The older `SESSION-NOTES (1).md` in the repo stops at Session 12 and can be deleted.
+
+---
+
+## Session 15: two-track tracker at /college, unlocked by /college-alston, saving to the site (Oct 24, 2026)
+
+The client asked for the newest Scholarship Tracker at **www.mcalpinereunion.com/college**, unlocked by visiting **www.mcalpinereunion.com/college-alston**, with progress that saves to the site and lasts over time. It replaces the Session 14 page.
+
+### What's on the page
+- **Opening screen:** a parallax chooser with two buttons, **Engineering** (class of 2027) and **Pre-Med** (class of 2028). Each button scrolls to its track.
+- **Engineering track:** the tracker as built on Oct 21–24 (outside, admissions, university, costs, lists, excluded), with CU Boulder and Cornell added.
+- **Pre-Med track:**
+  - 77 outside scholarships matched to the pre-med student.
+  - School scholarships and admissions for nine schools.
+  - Pre-med strength, joint degrees (including the UNC–Duke Robertson program and cross-registration) and a timeline.
+- **Colors:** blue and purple, as the client requested for this tracker. It does not use the reunion site's lime and black.
+- **The older /college page is unchanged.**
+
+### Link and unlock
+- **`/college` is the page.** In a browser that hasn't been unlocked, it shows only a short screen asking for the private link.
+- **`/college-alston` is the key.** Opening it once:
+  - unlocks the page in that browser (a flag saved in the browser), and
+  - changes the address to `/college`.
+- **After that,** `/college` opens directly in that browser.
+- **There is no code to lose.** The key is the address itself.
+- **This is a soft lock, chosen by the client.** The page is not encrypted, and because this repository is public, its contents can also be read on GitHub.
+- **Search engines:** the page tells them not to index it.
+- **Routes:** `vercel.json` sends `/college`, `/college/`, `/college-alston` and `/college-alston/` to `college.html`.
+- **Session 14's sealed page and its `#k=` link are retired.** That link now opens the new page, after the unlock.
+
+### Saving progress to the site
+- **Where it saves:** progress lives in the site's Supabase project (`mcalpine-reunion`), in one record:
+  - table: `private.tracker_state`
+  - read and write functions: `tracker_get` and `tracker_save`
+- **No login:** anyone who opens the page shares the same progress, on any device.
+- **How the page saves:**
+  - Each change is saved about a second later.
+  - The page checks for changes from other devices every minute and whenever it comes back to the front.
+  - Each mark carries a timestamp, so the newest change wins.
+  - A copy is also kept in the browser, so changes made while offline save once the site is reachable again.
+- **Status:** a small badge at the bottom-left shows "Saved to the site", "Saving…" or a can't-reach note.
+- **Pausing:** the Supabase project was **paused** on Oct 24 (free projects sleep after about a week unused) and was restored the same day. While paused, the tracker keeps working from the browser copy, and the Reservation form's database copy does not save; its emails are unaffected. Regular use keeps it awake. Upgrading Supabase or adding a scheduled ping would prevent pauses.
+
+### Editing the page later
+- Rebuild the tracker, then run `build_site.py`, which adds the saving settings. It writes `college.html` directly.
+- Build files are kept outside the repo, in the working session's `scratchpad/alston/`.
+
+### Files changed
+- `college.html`: replaced with the two-track tracker and the address-based unlock.
+- `vercel.json`: two rewrites added.
+- `SESSION-NOTES 1.md`: this entry.
 
 ---
 
